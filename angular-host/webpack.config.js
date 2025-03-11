@@ -19,41 +19,40 @@ module.exports = {
       ...sharedMappings.getAliases(),
     },
   },
-  experiments: {
-    outputModule: true,
-  },
   plugins: [
     new ModuleFederationPlugin({
-      library: { type: "module" },
+      name: "angularHost",
+      filename: "remoteEntry.js",
       remotes: {
         reactDashboard: "reactDashboard@http://localhost:3000/remoteEntry.js",
       },
-      shared: share({
-        "@angular/core": {
-          singleton: true,
-          strictVersion: true,
-          requiredVersion: "auto",
-        },
-        "@angular/common": {
-          singleton: true,
-          strictVersion: true,
-          requiredVersion: "auto",
-        },
-        "@angular/common/http": {
-          singleton: true,
-          strictVersion: true,
-          requiredVersion: "auto",
-        },
-        "@angular/router": {
-          singleton: true,
-          strictVersion: true,
-          requiredVersion: "auto",
-        },
-        // react: { singleton: true, requiredVersion: false },
-        // "react-dom": { singleton: true, requiredVersion: false },
-
+      shared: {
+        ...share({
+          "@angular/core": {
+            singleton: true,
+            strictVersion: true,
+            requiredVersion: "auto",
+          },
+          "@angular/common": {
+            singleton: true,
+            strictVersion: true,
+            requiredVersion: "auto",
+          },
+          "@angular/common/http": {
+            singleton: true,
+            strictVersion: true,
+            requiredVersion: "auto",
+          },
+          "@angular/router": {
+            singleton: true,
+            strictVersion: true,
+            requiredVersion: "auto",
+          },
+          react: { singleton: true, requiredVersion: "^18.0.0" },
+          "react-dom": { singleton: true, requiredVersion: "^18.0.0" },
+        }),
         ...sharedMappings.getDescriptors(),
-      }),
+      },
     }),
     sharedMappings.getPlugin(),
   ],

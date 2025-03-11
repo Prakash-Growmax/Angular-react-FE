@@ -55,6 +55,7 @@ module.exports = {
           eager: true,
         },
       },
+      library: { type: "var", name: "reactDashboard" },
     }),
   ],
 };

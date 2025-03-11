@@ -8,7 +8,7 @@ const Dashboard = () => {
       <div className="dashboard-grid">
         <div className="card">
           <h3>Total Sales </h3>
-          <p className="value">$12,34512</p>
+          <p className="value">$12,512</p>
           <p className="trend positive">↑ 15%</p>
         </div>
         <div className="card">
