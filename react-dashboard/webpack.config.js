@@ -42,6 +42,7 @@ module.exports = {
       filename: "remoteEntry.js",
       exposes: {
         "./Dashboard": "./src/components/Dashboard",
+        "./queryClient": "./src/shared/queryClientSingleton.js",
       },
       shared: {
         react: {
@@ -52,6 +53,11 @@ module.exports = {
         "react-dom": {
           singleton: true,
           requiredVersion: "^18.0.0",
+          eager: true,
+        },
+        "@tanstack/react-query": {
+          singleton: true,
+          requiredVersion: "^5.0.0",
           eager: true,
         },
       },
